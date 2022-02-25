@@ -1,0 +1,230 @@
+{
+	"compiler": {
+		"version": "0.8.12+commit.f00d7308"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32[]",
+						"name": "proposalNames",
+						"type": "bytes32[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "chairperson",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					}
+				],
+				"name": "delegate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "voter",
+						"type": "address[]"
+					}
+				],
+				"name": "giveRightToVote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "proposals",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "name",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "voteCount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "proposal",
+						"type": "uint256"
+					}
+				],
+				"name": "vote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "voters",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "weight",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "voted",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "delegate",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "vote",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "winnerName",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "winnerName_",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "winningProposal",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "winningProposal_",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"details": "Create a new ballot to choose one of 'proposalNames'.",
+					"params": {
+						"proposalNames": "names of proposals"
+					}
+				},
+				"delegate(address)": {
+					"details": "Delegate your vote to the voter 'to'.",
+					"params": {
+						"to": "address to which vote is delegated"
+					}
+				},
+				"giveRightToVote(address[])": {
+					"details": "Give 'voter' array the right to vote on this ballot. May only be called by 'chairperson'.",
+					"params": {
+						"voter": "addresses of eligible 10 voters"
+					}
+				},
+				"vote(uint256)": {
+					"details": "Give your vote (including votes delegated to you) to proposal 'proposals[proposal].name'.",
+					"params": {
+						"proposal": "index of proposal in the proposals array"
+					}
+				},
+				"winnerName()": {
+					"details": "Calls winningProposal() function to get the index of the winner contained in the proposals array and then",
+					"returns": {
+						"winnerName_": "the name of the winner"
+					}
+				},
+				"winningProposal()": {
+					"details": "Computes the winning proposal taking all previous votes into account.",
+					"returns": {
+						"winningProposal_": "index of winning proposal in the proposals array"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"voter.sol": "voting"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"voter.sol": {
+			"keccak256": "0xb0e6c1fc2b106f99aaa45fb16c1161ac050fae99f08fdbb0bd9cd43a7098f88c",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://9654055333b1f5c4e7bb0b53a96abb030d8c06b7034cc19070dc59421dd3363f",
+				"dweb:/ipfs/QmcyrjgaFUykpzX6onPViQL9EMmx4tr656mHLECHAgQiox"
+			]
+		}
+	},
+	"version": 1
+}
