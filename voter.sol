@@ -59,7 +59,7 @@ contract Ballot{
     function giveRightToVote(address[] memory voter) public {
         for (uint i = 0; i < voter.length; i++){ 
         require(msg.sender == chairperson && !voters[voter[i]].voted && 
-        voters[voter[i]].weight == 0, "Requirements not met.");
+        voters[voter[i]].weight == 0, "Ensure to check requirements");
         voters[voter[i]].weight = 1; 
         }
     }    
