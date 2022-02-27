@@ -50,33 +50,19 @@ contract Ballot{
             }));
         }
     }
-
-    modifier giveRights(){ // giveRights modifier reduces the amount of transactions in the giveRightsToVote function
-        require(msg.sender == chairperson,"Only chairperson can give right to vote."); //requires that only the chairperson can call the the giveRightsToVote function
-        // require(!voters[currentAddress].voted,"The voter already voted."); //requires that voter cannot vote twie
-        // require(voters[currentAddress].weight == 0);
-        
-        _; //calls the giveRightsToVote function when this modifier is attached to
-    }
     
     /** 
-     * @dev Give 'voter' array the right to vote on this ballot. May only be called by 'chairperson'.
-     * @param voter addresses of eligible 10 voters
+    i modified the giveRightToVote function to accept an array of voter addresses to grant rights,by looping
+    through each of them, checking for certain requirements and giving a weight of 1 to each voter .
      */
-    function giveRightToVote(address voter) public giveRights { //giveRightToVote accepts an address to give rights
-        uint8 giveRightsToVoteCounter; //giveRightsToVoteCounter local variable to ensure function does not give rights to more than 10 addresses 
-        require(giveRightsToVoteCounter < 10,"Ensure number of voters in array is 10"); //requires that exactly 10 addresses have the right to vote
-        Voter storage v = voters[voter]; //assigns a struct v to each address via mapping
-        v.weight += 1; //gives each address a weight of 1
-        giveRightsToVoteCounter++; //increaments counter by 1 after each function execution
-    }
-
-    function viewVoters(address[] memory votered) view public returns(Voter[] memory v){ //view struct of each address with right to vote
-        v = new Voter[](votered.length);
-        for (uint256 i = 0; i < votered.length; i++) {
-            v[i] = voters[votered[i]];
+    
+    function giveRightToVote(address[] memory voter) public {
+        for (uint i = 0; i < voter.length; i++){ 
+        require(msg.sender == chairperson && !voters[voter[i]].voted && 
+        voters[voter[i]].weight == 0, "Requirements not met.");
+        voters[voter[i]].weight = 1; 
         }
-    }
+    }    
 
     /**
      * @dev Delegate your vote to the voter 'to'.

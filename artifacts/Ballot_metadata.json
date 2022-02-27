@@ -45,9 +45,9 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
+						"internalType": "address[]",
 						"name": "voter",
-						"type": "address"
+						"type": "address[]"
 					}
 				],
 				"name": "giveRightToVote",
@@ -74,47 +74,6 @@
 						"internalType": "uint256",
 						"name": "voteCount",
 						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address[]",
-						"name": "votered",
-						"type": "address[]"
-					}
-				],
-				"name": "viewVoters",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "weight",
-								"type": "uint256"
-							},
-							{
-								"internalType": "bool",
-								"name": "voted",
-								"type": "bool"
-							},
-							{
-								"internalType": "address",
-								"name": "delegate",
-								"type": "address"
-							},
-							{
-								"internalType": "uint256",
-								"name": "vote",
-								"type": "uint256"
-							}
-						],
-						"internalType": "struct Ballot.Voter[]",
-						"name": "v",
-						"type": "tuple[]"
 					}
 				],
 				"stateMutability": "view",
@@ -209,12 +168,6 @@
 						"to": "address to which vote is delegated"
 					}
 				},
-				"giveRightToVote(address)": {
-					"details": "Give 'voter' array the right to vote on this ballot. May only be called by 'chairperson'.",
-					"params": {
-						"voter": "addresses of eligible 10 voters"
-					}
-				},
 				"vote(uint256)": {
 					"details": "Give your vote (including votes delegated to you) to proposal 'proposals[proposal].name'.",
 					"params": {
@@ -238,7 +191,11 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {},
+			"methods": {
+				"giveRightToVote(address[])": {
+					"notice": "i modified the giveRightToVote function to accept an array of voter addresses to grant rights,by looping through each of them, checking for certain requirements and giving a weight of 1 to each voter ."
+				}
+			},
 			"version": 1
 		}
 	},
@@ -259,11 +216,11 @@
 	},
 	"sources": {
 		"voter.sol": {
-			"keccak256": "0xd722a8b74055f248c493d04160ef7a92ba5c9e3e34ba3e3cbc13f56493cfc0dd",
+			"keccak256": "0xf9511c5cfbe0d2f60cae32e564726bec5fe57d9cdf5a171d258d33c6e5a73d41",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://99914d5509d3204eec0c6e629c59ebd1cf3a0c426b83cfc1bc2554bcdae857c7",
-				"dweb:/ipfs/QmcasvvQEngpsGW8Motb15a8qMnzpvnbiVe1TeqD99w4Lk"
+				"bzz-raw://ba9503b2ce9a4e735a40e0a027a1b5a121d69bcf4a908bd23c83adbbce73b187",
+				"dweb:/ipfs/QmacwpM531Hpku4gfHfRsiU83ar52WWnkKSHqqurpiKew6"
 			]
 		}
 	},
